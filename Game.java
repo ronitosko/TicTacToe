@@ -191,11 +191,11 @@ public class Game{
 				}else{
 					
 					if(player == 1){
-						System.out.println(board.getPlayer1().getSymbol());
+						
 						board.makeMove(x, y, board.getPlayer1());
 						
 					}else if(player == 0){
-						System.out.println(board.getPlayer2().getSymbol());
+						
 						board.makeMove(x, y, board.getPlayer2());
 						
 					}//end if
