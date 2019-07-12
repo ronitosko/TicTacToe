@@ -28,20 +28,11 @@ public class Game{
 			}//end of while
 		
 
-		//setting player2 symbol
-		if(player1 == 1)
-			player2 = 0;
-		else if(player1 == 0)
-			player2 = 1;
-		else
-			System.exit(-1);
-
-		
 			//setting player2 symbol
 			if(player1 == 1)
 				player2 = 0;
 			else if(player1 == 0)
-				player1 = 1;
+				player2 = 1;
 			else
 				System.exit(-1);
 		
@@ -54,7 +45,7 @@ public class Game{
 			while(true){
 			
 				//Player1
-				System.out.println("Player 1 turn.");
+				System.out.println("Player with symbol " + player1 + " turn.");
 				playerMove(1, board);
 				totalMoves--;
 				done = endCheck(board.getBoard(), totalMoves);
@@ -71,7 +62,7 @@ public class Game{
 				}
 
 				//Player2
-				System.out.println("Player 2 turn.");
+				System.out.println("Player with symbol " + player2 + " turn.");
 				playerMove(0, board);
 				totalMoves--;
 				done = endCheck(board.getBoard(), totalMoves);
@@ -120,42 +111,42 @@ public class Game{
 	public static boolean endCheck(int[][] board_scores, int totalMoves){
 		
 		
-		if(board_scores[0][0] > 0 && (board_scores[0][0] == board_scores[1][1] && board_scores[1][1] == board_scores[2][2]) ){
+		if(board_scores[0][0] >= 0 && (board_scores[0][0] == board_scores[1][1] && board_scores[1][1] == board_scores[2][2]) ){
 			System.out.println("Player " + board_scores[1][1] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[0][0] > 0 && (board_scores[0][0] == board_scores[1][0] && board_scores[1][0] == board_scores[2][0]) ){
+		if(board_scores[0][0] >= 0 && (board_scores[0][0] == board_scores[1][0] && board_scores[1][0] == board_scores[2][0]) ){
 			System.out.println("Player " + board_scores[0][0] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[0][0] > 0 && (board_scores[0][0] == board_scores[0][1] && board_scores[0][1] == board_scores[0][2]) ){
+		if(board_scores[0][0] >= 0 && (board_scores[0][0] == board_scores[0][1] && board_scores[0][1] == board_scores[0][2]) ){
 			System.out.println("Player " + board_scores[0][0] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[0][1] > 0 && (board_scores[0][1] == board_scores[1][1] && board_scores[1][1] == board_scores[2][1]) ){
+		if(board_scores[0][1] >= 0 && (board_scores[0][1] == board_scores[1][1] && board_scores[1][1] == board_scores[2][1]) ){
 			System.out.println("Player " + board_scores[0][1] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[1][0] > 0 && (board_scores[1][0] == board_scores[1][1] && board_scores[1][1] == board_scores[1][2]) ){
+		if(board_scores[1][0] >= 0 && (board_scores[1][0] == board_scores[1][1] && board_scores[1][1] == board_scores[1][2]) ){
 			System.out.println("Player " + board_scores[1][1] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[2][0] > 0 && (board_scores[2][0] == board_scores[2][1] && board_scores[2][1] == board_scores[2][2]) ){
+		if(board_scores[2][0] >= 0 && (board_scores[2][0] == board_scores[2][1] && board_scores[2][1] == board_scores[2][2]) ){
 			System.out.println("Player " + board_scores[2][1] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[0][2] > 0 && (board_scores[0][2] == board_scores[1][2] && board_scores[1][2] == board_scores[2][2]) ){
+		if(board_scores[0][2] >= 0 && (board_scores[0][2] == board_scores[1][2] && board_scores[1][2] == board_scores[2][2]) ){
 			System.out.println("Player " + board_scores[2][1] + " is the winner!");
 			return true;
 		}
 		
-		if(board_scores[0][2] > 0 && (board_scores[0][2] == board_scores[1][1] && board_scores[1][1] == board_scores[2][0]) ){
+		if(board_scores[0][2] >= 0 && (board_scores[0][2] == board_scores[1][1] && board_scores[1][1] == board_scores[2][0]) ){
 			System.out.println("Player " + board_scores[2][1] + " is the winner!");
 			return true;
 		}
@@ -200,9 +191,11 @@ public class Game{
 				}else{
 					
 					if(player == 1){
+						System.out.println(board.getPlayer1().getSymbol());
 						board.makeMove(x, y, board.getPlayer1());
 						
 					}else if(player == 0){
+						System.out.println(board.getPlayer2().getSymbol());
 						board.makeMove(x, y, board.getPlayer2());
 						
 					}//end if
